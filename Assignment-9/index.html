@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Appointment Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Online Appointment Booking</h1>
+        <div class="services">
+            <div class="service">
+                <h3>Doctor Consultation</h3>
+                <button onclick="openForm('Doctor')">Book Appointment</button>
+            </div>
+            <div class="service">
+                <h3>Salon Booking</h3>
+                <button onclick="openForm('Salon')">Book Appointment</button>
+            </div>
+            <div class="service">
+                <h3>Car Services</h3>
+                <button onclick="openForm('Car Service')">Book Appointment</button>
+            </div>
+        </div>
+    </div>
 
+    <div id="bookingForm" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeForm()">&times;</span>
+            <h2>Book an Appointment</h2>
+            <form id="appointmentForm">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" required maxlength="10">
+
+                <label for="service">Select Service:</label>
+                <select id="service">
+                    <option value="Doctor">Doctor Consultation</option>
+                    <option value="Salon">Salon Booking</option>
+                    <option value="Car Service">Car Service</option>
+                </select>
+
+                <label for="datetime">Preferred Date & Time:</label>
+                <input type="datetime-local" id="datetime" required>
+
+                <label for="requests">Special Requests:</label>
+                <textarea id="requests"></textarea>
+
+                <label>
+                    <input type="checkbox" id="terms" required> I agree to the terms
+                </label>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="appointments">
+        <h2>Booked Appointments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Service</th>
+                    <th>Date & Time</th>
+                    <th>Status</th>
+                    <th>Special Requests</th>
+                </tr>
+            </thead>
+            <tbody id="appointmentList"></tbody>
+        </table>
+    </div>
+
+    <div class="clear">
+        <button onclick="clearAppointments()">Clear All Appointments</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
